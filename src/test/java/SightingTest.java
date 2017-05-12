@@ -23,4 +23,10 @@ public class SightingTest{
     assertTrue(testSighting instanceof Sighting);
   }
 
+  @Test
+  public void getName_personInstantiatesWithName_Henry() {
+    Person testPerson = new Person("Henry", "henry@henry.com");
+    assertEquals("Henry", testPerson.getName());
+  }
+
 }
