@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.sql.Timestamp;
 
-public class Animal{
+public class Animal implements DatabaseManagement{
   private int id;
   private String name;
 
@@ -29,7 +29,7 @@ public class Animal{
       return false;
   }
 
-  Override
+  @Override
   public void save() {
     String sql = "INSERT INTO animals (name) VALUES (:name);";
 
@@ -47,6 +47,17 @@ public class Animal{
         return con.createQuery(sql)
             .throwOnMappingFailure(false)
             .executeAndFetch(Animal.class);
+    }
+  }
+
+  @Override
+  public void delete() {
+    String sql = "DELETE FROM animals WHERE id = :id;";
+
+    try (Connection con = DB.sql2o.open()) {
+        con.createQuery(sql)
+            .addParameter("id", id)
+            .executeUpdate();
     }
   }
 
