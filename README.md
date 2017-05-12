@@ -31,3 +31,18 @@ You will need the following things properly installed on your computer.
 ### SQL
 
 CREATE DATABASE wildlife_tracker;
+
+CREATE TABLE animals (
+  id serial PRIMARY KEY,
+  name varchar,
+  health varchar,
+  age varchar,
+  is_endangered boolean
+);
+
+CREATE TABLE sightings (
+  id serial PRIMARY KEY,
+  animal_id int,
+  location varchar,
+  ranger_name varchar
+  )
