@@ -49,15 +49,14 @@ public class Animal implements DatabaseManagement{
             .executeAndFetch(Animal.class);
     }
   }
-
-  @Override
-  public void delete() {
-    String sql = "DELETE FROM animals WHERE id = :id;";
+  public static Animal find(int id) {
+    String sql = "SELECT * FROM animals WHERE id = :id;";
 
     try (Connection con = DB.sql2o.open()) {
-        con.createQuery(sql)
+        return con.createQuery(sql)
             .addParameter("id", id)
-            .executeUpdate();
+            .throwOnMappingFailure(false)
+            .executeAndFetchFirst(Animal.class);
     }
   }
 
