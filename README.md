@@ -45,4 +45,4 @@ CREATE TABLE sightings (
   animal_id int,
   location varchar,
   ranger_name varchar
-  )
+  );
