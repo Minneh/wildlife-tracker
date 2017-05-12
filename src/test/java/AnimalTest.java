@@ -6,7 +6,7 @@ public class AnimalTest{
 
   @Rule DatabaseRule database = new DatabaseRule();
 
-  Private Animal testAnimal;
+  private Animal testAnimal;
 
   @Before
   public void setup(){
@@ -26,7 +26,7 @@ public class AnimalTest{
   @Test
   public void getId_animalInstantiatesWithId(){
     testAnimal.save();
-    assertTrue(testAnimal.getId > 0);
+    assertTrue(testAnimal.getId() > 0);
   }
 
   @Test

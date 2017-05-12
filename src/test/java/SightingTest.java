@@ -1,4 +1,8 @@
+import org.sql2o.*;
 import org.junit.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.text.DateFormat;
 import static org.junit.Assert.*;
 
 public class SightingTest{
