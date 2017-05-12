@@ -29,5 +29,16 @@ public class Animal{
       return false;
   }
 
+  Override
+      public void save() {
+          String sql = "INSERT INTO animals (name) VALUES (:name);";
+
+          try (Connection con = DB.sql2o.open()) {
+              this.id = (int) con.createQuery(sql, true)
+                  .addParameter("name", this.name)
+                  .executeUpdate()
+                  .getKey();
+          }
+      }
 
 }
