@@ -4,13 +4,14 @@ import org.sql2o.*;
 
 public class AnimalTest{
 
-  @Rule DatabaseRule database = new DatabaseRule();
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 
   private Animal testAnimal;
 
   @Before
   public void setup(){
-    Animal testAnimal = new Animal("Orangutan");
+    testAnimal = new Animal("Orangutan");
   }
 
   @Test
@@ -31,7 +32,7 @@ public class AnimalTest{
 
   @Test
   public void equals_returnsTrueIfNamesAreTheSame() {
-    Animal anotherAnimal = new Animal("Impala");
+    Animal anotherAnimal = new Animal("Orangutan");
     assertTrue(testAnimal.equals(anotherAnimal));
     }
 
