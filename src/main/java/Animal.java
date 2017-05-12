@@ -19,4 +19,15 @@ public class Animal{
     return id;
   }
 
+  @Override
+  public boolean equals(Object otherAnimal) {
+      if (otherAnimal instanceof Animal) {
+          Animal newAnimal = (Animal) otherAnimal;
+          return (this.getName().equals(newAnimal.getName()));
+      }
+
+      return false;
+  }
+
+
 }
