@@ -29,6 +29,13 @@ public class AnimalTest{
     assertTrue(testAnimal.getId > 0);
   }
 
+  @Test
+  public void save_assignsIdToObject() {
+    testAnimal.save();
+    Animal savedAnimal = Animal.all().get(0);
+    assertEquals(testAnimal.getId(), savedAnimal.getId());
+  }
+
 
 
 }
