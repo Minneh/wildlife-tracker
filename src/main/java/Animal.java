@@ -30,15 +30,24 @@ public class Animal{
   }
 
   Override
-      public void save() {
-          String sql = "INSERT INTO animals (name) VALUES (:name);";
+  public void save() {
+    String sql = "INSERT INTO animals (name) VALUES (:name);";
 
-          try (Connection con = DB.sql2o.open()) {
-              this.id = (int) con.createQuery(sql, true)
-                  .addParameter("name", this.name)
-                  .executeUpdate()
-                  .getKey();
-          }
-      }
+    try (Connection con = DB.sql2o.open()) {
+        this.id = (int) con.createQuery(sql, true)
+            .addParameter("name", this.name)
+            .executeUpdate()
+            .getKey();
+    }
+  }
+  public static List<Animal> all() {
+    String sql = "SELECT * FROM animals;";
+
+    try (Connection con = DB.sql2o.open()) {
+        return con.createQuery(sql)
+            .throwOnMappingFailure(false)
+            .executeAndFetch(Animal.class);
+    }
+  }
 
 }
