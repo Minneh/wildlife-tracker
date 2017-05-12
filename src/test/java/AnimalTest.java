@@ -18,4 +18,10 @@ public class AnimalTest{
     assertEquals(true, testAnimal instanceof Animal);
   }
 
+  @Test
+  public void getName_animalInstantiatesWithName_Orangutan() {
+    assertEquals("Orangutan", testAnimal.getName());
+  }
+
+
 }
