@@ -13,4 +13,9 @@ public class AnimalTest{
     Animal testAnimal = new Animal("Orangutan");
   }
 
+  @Test
+  public void animal_instantiatesCorrectly_true() {
+    assertEquals(true, testAnimal instanceof Animal);
+  }
+
 }
