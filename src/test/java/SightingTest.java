@@ -14,5 +14,9 @@ public class SightingTest{
     testSighting = new Sighting(1, "By the lower pond", "Ole Nkrumah", now);
   }
 
+  @Test
+  public void Sighting_instantiatesCorrectly() {
+    assertTrue(testSighting instanceof Sighting);
+  }
 
 }
