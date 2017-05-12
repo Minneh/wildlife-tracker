@@ -30,19 +30,13 @@ You will need the following things properly installed on your computer.
 
 ### SQL
 
-CREATE DATABASE wildlife_tracker;
+* Launch postgres
+* Type in psql
+* Run the following commands:
 
-CREATE TABLE animals (
-  id serial PRIMARY KEY,
-  name varchar,
-  health varchar,
-  age varchar,
-  is_endangered boolean
-);
-
-CREATE TABLE sightings (
-  id serial PRIMARY KEY,
-  animal_id int,
-  location varchar,
-  ranger_name varchar
-  );
+* `CREATE DATABASE wildlife_tracker;`
+* `\c wildlife_tracker;`
+* `CREATE TABLE animals (id serial PRIMARY KEY, name varchar);`
+* `CREATE TABLE endangered_animals (id serial PRIMARY KEY, name varchar, health varchar, age varchar);`
+* `CREATE TABLE sightings (id serial PRIMARY KEY, animal_id int, location varchar, ranger_name varchar);`
+* `CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;`
