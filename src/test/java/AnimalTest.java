@@ -23,5 +23,12 @@ public class AnimalTest{
     assertEquals("Orangutan", testAnimal.getName());
   }
 
+  @Test
+  public void getId_animalInstantiatesWithId(){
+    testAnimal.save();
+    assertTrue(testAnimal.getId > 0);
+  }
+
+
 
 }
