@@ -15,4 +15,8 @@ public class Animal{
     return name;
   }
 
+  public int getId() {
+    return id;
+  }
+
 }
