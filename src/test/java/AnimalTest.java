@@ -57,9 +57,16 @@ public class AnimalTest{
 
   @Test
    public void find_returnsAnimalWithSameId() {
-   testAnimal.save();
-   Animal anotherAnimal = new Animal("Baboon");
-   anotherAnimal.save();
-   assertEquals(Animal.find(anotherAnimal.getId()), anotherAnimal);
+     testAnimal.save();
+     Animal anotherAnimal = new Animal("Baboon");
+     anotherAnimal.save();
+     assertEquals(Animal.find(anotherAnimal.getId()), anotherAnimal);
+   }
+
+   @Test
+   public void delete_deletesAnimal() {
+       testAnimal.save();
+       testAnimal.delete();
+       assertEquals(0, Animal.all().size());
    }
 }
