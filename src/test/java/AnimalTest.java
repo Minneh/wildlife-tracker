@@ -43,8 +43,15 @@ public class AnimalTest{
   }
 
   @Test
-    public void save_insertsObjectIntoDatabase() {
-        testAnimal.save();
-        assertTrue(Animal.all().get(0).equals(testAnimal));
-    }
+  public void save_insertsObjectIntoDatabase() {
+    testAnimal.save();
+    assertTrue(Animal.all().get(0).equals(testAnimal));
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfAnimal() {
+    testAnimal.save();
+    Animal savedAnimal = Animal.all().get(0);
+    assertEquals(testAnimal.getId(), savedAnimal.getId());
+  }
 }
