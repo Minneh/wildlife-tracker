@@ -14,6 +14,7 @@ public class Animal implements DatabaseManagement{
     this.name = name;
     this.age = age;
     this.health = health;
+    this.type = type;
   }
 
   public String getName(){
@@ -30,6 +31,10 @@ public class Animal implements DatabaseManagement{
 
   public String getHealth() {
     return health;
+  }
+
+  public String getType() {
+    return type;
   }
 
   @Override
