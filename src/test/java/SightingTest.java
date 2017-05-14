@@ -22,11 +22,11 @@ public class SightingTest{
   public void Sighting_instantiatesCorrectly() {
     assertTrue(testSighting instanceof Sighting);
   }
-  //
-  // @Test
-  // public void equals_returnsTrueIfNameAndLocationAreTheSame_true(){
-  //
-  // }
+
+  @Test
+  public void getAnimalId_animalInstantiatesWithAnimalId_1() {
+    assertEquals(1, testAnimal.getId());
+  }
 
 
 
