@@ -14,5 +14,9 @@ public class Sighting {
         this.time_seen = time_seen;
     }
 
+    public int getId(){
+      return id;
+    }
+
 
 }
