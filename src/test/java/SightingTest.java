@@ -41,6 +41,12 @@ public class SightingTest{
     assertEquals("Zone A", testSighting.getLocation());
   }
 
+  @Test
+  public void getRangerName_sightingInstantiatesWithRangerName(){
+    testSighting.save();
+    assertEquals("Kamau", testSighting.getRangerName());
+  }
+
 
 
 }
