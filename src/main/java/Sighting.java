@@ -5,14 +5,14 @@ public class Sighting {
     private int animal_id;
     private String location;
     private String ranger;
-    private Timestamp seen_at;
+    private Timestamp time_seen;
 
-    public Sighting(int animal_id, String location, String ranger, Timestamp seen_at) {
+    public Sighting(int animal_id, String location, String ranger, Timestamp time_seen) {
         this.animal_id = animal_id;
         this.location = location;
         this.ranger = ranger;
-        this.seen_at = seen_at;
+        this.time_seen = time_seen;
     }
 
-    
+
 }

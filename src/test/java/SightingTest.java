@@ -15,14 +15,14 @@ public class SightingTest{
   @Before
   public void setUp() {
     Timestamp now = new Timestamp(new Date().getTime());
-    testSighting = new Sighting(1, "By the lower pond", "Ole Nkrumah", now);
+    testSighting = new Sighting(1, "Zone A", "Kamau", now);
   }
 
   @Test
   public void Sighting_instantiatesCorrectly() {
     assertTrue(testSighting instanceof Sighting);
   }
-  // 
+  //
   // @Test
   // public void equals_returnsTrueIfNameAndLocationAreTheSame_true(){
   //
