@@ -29,6 +29,14 @@ public class Sighting implements DatabaseManagement{
     return location;
   }
 
+  public String getRangerName(){
+    return ranger_name;
+  }
+
+  public Timestamp getTimeSeen(){
+    return time_seen;
+  }
+
   @Override
   public void save() {
     String sql = "INSERT INTO sightings (animal_id, location, ranger_name, time_seen) VALUES (:animal_id, :location, :ranger_name, :time_seen);";

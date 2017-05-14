@@ -47,6 +47,4 @@ public class SightingTest{
     assertEquals("Kamau", testSighting.getRangerName());
   }
 
-
-
 }
