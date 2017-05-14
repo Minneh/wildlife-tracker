@@ -29,6 +29,12 @@ public class SightingTest{
     assertTrue(testSighting.getId() > 0);
   }
 
+  @Test
+  public void getAnimalId_sightingInstantiatesWithAnimalId(){
+    testSighting.save();
+    assertEquals(1, testSighting.getAnimalId());
+  }
+
 
 
 }
