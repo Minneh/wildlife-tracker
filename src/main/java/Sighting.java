@@ -13,4 +13,6 @@ public class Sighting {
         this.ranger = ranger;
         this.seen_at = seen_at;
     }
+
+    
 }

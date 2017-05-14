@@ -6,9 +6,13 @@ import java.sql.Timestamp;
 public class Animal implements DatabaseManagement{
   private int id;
   private String name;
+  private String age;
+  private String health;
+  private String type;
 
-  public Animal(String name){
+  public Animal(String name, String age, String health, String type){
     this.name = name;
+    this.age = age;
   }
 
   public String getName(){
@@ -17,6 +21,10 @@ public class Animal implements DatabaseManagement{
 
   public int getId() {
     return id;
+  }
+
+  public String getAge() {
+    return age;
   }
 
   @Override
@@ -60,7 +68,7 @@ public class Animal implements DatabaseManagement{
             .executeAndFetch(Animal.class);
     }
   }
-  
+
   public static Animal find(int id) {
     String sql = "SELECT * FROM animals WHERE id = :id;";
 

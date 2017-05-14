@@ -11,7 +11,7 @@ public class AnimalTest{
 
   @Before
   public void setup(){
-    testAnimal = new Animal("Orangutan");
+    testAnimal = new Animal("Orangutan", "Young", "Healthy", "Unendangered");
   }
 
   @Test
@@ -31,8 +31,13 @@ public class AnimalTest{
   }
 
   @Test
+  public void getAge_animalInstantiatesWithAge_Young() {
+    assertEquals("Young", testAnimal.getAge());
+  }
+
+  @Test
   public void equals_returnsTrueIfNamesAreTheSame() {
-    Animal anotherAnimal = new Animal("Orangutan");
+    Animal anotherAnimal = new Animal("Orangutan", "Young", "Healthy", "Unendangered");
     assertTrue(testAnimal.equals(anotherAnimal));
     }
 
@@ -59,7 +64,7 @@ public class AnimalTest{
   @Test
    public void find_returnsAnimalWithSameId() {
      testAnimal.save();
-     Animal anotherAnimal = new Animal("Baboon");
+     Animal anotherAnimal = new Animal("Baboon", "Young", "Healthy", "Unendangered");
      anotherAnimal.save();
      assertEquals(Animal.find(anotherAnimal.getId()), anotherAnimal);
    }
