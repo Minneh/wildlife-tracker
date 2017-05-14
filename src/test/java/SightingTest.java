@@ -35,6 +35,12 @@ public class SightingTest{
     assertEquals(1, testSighting.getAnimalId());
   }
 
+  @Test
+  public void getLocation_sightingInstantiatesWithLocation(){
+    testSighting.save();
+    assertEquals("Zone A", testSighting.getLocation());
+  }
+
 
 
 }
