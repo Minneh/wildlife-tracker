@@ -41,6 +41,11 @@ public class AnimalTest{
   }
 
   @Test
+  public void getType_animalInstantiatesWithType_Type() {
+    assertEquals("Unendangered", testAnimal.getType());
+  }
+
+  @Test
   public void equals_returnsTrueIfNamesAreTheSame() {
     Animal anotherAnimal = new Animal("Orangutan", "Young", "Healthy", "Unendangered");
     assertTrue(testAnimal.equals(anotherAnimal));
