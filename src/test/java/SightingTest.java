@@ -46,5 +46,10 @@ public class SightingTest{
     testSighting.save();
     assertEquals("Kamau", testSighting.getRangerName());
   }
+  @Test
+  public void equals_returnsTrueIfAllPropertiesAreTheSame() {
+    Sighting anotherSighting = new Sighting(1, "Zone A", "Kamau", now);
+    assertEquals(true, testSighting.equals(anotherSighting));
+    }
 
 }
