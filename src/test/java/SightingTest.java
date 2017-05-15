@@ -48,7 +48,8 @@ public class SightingTest{
   }
   @Test
   public void equals_returnsTrueIfAllPropertiesAreTheSame() {
-    Sighting anotherSighting = new Sighting(1, "Zone A", "Kamau", now);
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    Sighting anotherSighting = new Sighting(1, "Zone A", "Kamau", rightNow);
     assertEquals(true, testSighting.equals(anotherSighting));
     }
 
