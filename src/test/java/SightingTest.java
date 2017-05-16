@@ -53,11 +53,17 @@ public class SightingTest{
     assertEquals(true, testSighting.equals(anotherSighting));
     }
 
-    @Test
-    public void save_assignsIdToObject() {
-      testSighting.save();
-      Sighting savedSighting = Sighting.all().get(0);
-      assertEquals(testSighting.getId(), savedSighting.getId());
-    }
+  @Test
+  public void save_assignsIdToObject() {
+    testSighting.save();
+    Sighting savedSighting = Sighting.all().get(0);
+    assertEquals(testSighting.getId(), savedSighting.getId());
+  }
+
+  @Test
+  public void save_insertsObjectIntoDatabase() {
+    testSighting.save();
+    assertTrue(Sighting.all().get(0).equals(testSighting));
+  }
 
 }
