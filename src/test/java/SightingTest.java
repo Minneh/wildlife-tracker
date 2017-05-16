@@ -66,4 +66,11 @@ public class SightingTest{
     assertTrue(Sighting.all().get(0).equals(testSighting));
   }
 
+  @Test
+  public void all_returnsAllInstancesOfSighting() {
+    testSighting.save();
+    Sighting savedSighting = Sighting.all().get(0);
+    assertEquals(testSighting.getId(), savedSighting.getId());
+  }
+
 }
