@@ -76,4 +76,13 @@ public class SightingTest{
     assertEquals(true, Sighting.all().get(1).equals(otherSighting));
   }
 
+  @Test
+  public void find_returnsSightingWithSameId_secondSighting() {
+    testSighting.save();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    Sighting otherSighting = new Sighting(1, "Zone B", "Ole Nkrumah", rightNow);
+    otherSighting.save();
+    assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
+  }
+
 }
