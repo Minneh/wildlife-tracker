@@ -85,4 +85,11 @@ public class SightingTest{
     assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
   }
 
+  @Test
+  public void delete_deletesSighting() {
+      testSighting.save();
+      testSighting.delete();
+      assertEquals(0, Sighting.all().size());
+  }
+
 }
