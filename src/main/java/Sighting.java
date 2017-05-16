@@ -52,6 +52,16 @@ public class Sighting implements DatabaseManagement{
     }
   }
 
+  public static List<Sighting> all() {
+    String sql = "SELECT * FROM sightings;";
+
+    try (Connection con = DB.sql2o.open()) {
+        return con.createQuery(sql)
+            .throwOnMappingFailure(false)
+            .executeAndFetch(Sighting.class);
+    }
+  }
+
   public boolean equals(Object otherSighting){
     if(!(otherSighting instanceof Sighting)){
       return false;
