@@ -73,6 +73,18 @@ public class Sighting implements DatabaseManagement{
     }
   }
 
+  public static Sighting find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings WHERE id=:id;";
+      Sighting sighting = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Sighting.class);
+      return sighting;
+    } catch (IndexOutOfBoundsException exception) {
+      return null;
+    }
+  }
+
   public void delete(){
     try(Connection con = DB.sql2o.open()) {
       con.createQuery("DELETE FROM sightings WHERE id=:id")
