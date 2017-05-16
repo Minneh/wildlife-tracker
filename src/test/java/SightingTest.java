@@ -69,6 +69,7 @@ public class SightingTest{
   @Test
   public void all_returnsAllInstancesOfSighting_false() {
     testSighting.save();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
     Sighting otherSighting = new Sighting(1, "Zone B", "Ole Nkrumah", rightNow);
     otherSighting.save();
     assertEquals(true, Sighting.all().get(0).equals(testSighting));

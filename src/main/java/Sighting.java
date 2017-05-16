@@ -2,6 +2,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sighting implements DatabaseManagement{
   private int id;
