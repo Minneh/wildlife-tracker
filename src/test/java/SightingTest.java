@@ -67,10 +67,12 @@ public class SightingTest{
   }
 
   @Test
-  public void all_returnsAllInstancesOfSighting() {
+  public void all_returnsAllInstancesOfSighting_false() {
     testSighting.save();
-    Sighting savedSighting = Sighting.all().get(0);
-    assertEquals(testSighting.getId(), savedSighting.getId());
+    Sighting otherSighting = new Sighting(1, "Zone B", "Ole Nkrumah", rightNow);
+    otherSighting.save();
+    assertEquals(true, Sighting.all().get(0).equals(testSighting));
+    assertEquals(true, Sighting.all().get(1).equals(otherSighting));
   }
 
 }
