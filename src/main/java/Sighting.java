@@ -10,13 +10,13 @@ public class Sighting implements DatabaseManagement{
   private int animal_id;
   private String location;
   private String ranger_name;
-  private Timestamp time_seen;
+  private Timestamp timestamp;
 
-  public Sighting(int animal_id, String location, String ranger_name, Timestamp time_seen) {
+  public Sighting(int animal_id, String location, String ranger_name, Timestamp timestamp) {
       this.animal_id = animal_id;
       this.location = location;
       this.ranger_name = ranger_name;
-      this.time_seen = time_seen;
+      this.timestamp = timestamp;
   }
 
   public int getId(){
@@ -36,19 +36,19 @@ public class Sighting implements DatabaseManagement{
   }
 
   public Timestamp getTimeSeen(){
-    return time_seen;
+    return timestamp;
   }
 
   @Override
   public void save() {
-    String sql = "INSERT INTO sightings (animal_id, location, ranger_name, time_seen) VALUES (:animal_id, :location, :ranger_name, :time_seen);";
+    String sql = "INSERT INTO sightings (animal_id, location, ranger_name, timestamp) VALUES (:animal_id, :location, :ranger_name, :timestamp);";
 
     try (Connection con = DB.sql2o.open()) {
         this.id = (int) con.createQuery(sql, true)
             .addParameter("animal_id", this.animal_id)
             .addParameter("location", this.location)
             .addParameter("ranger_name", this.ranger_name)
-            .addParameter("time_seen",this.time_seen)
+            .addParameter("timestamp",this.timestamp)
             .executeUpdate()
             .getKey();
     }
