@@ -31,4 +31,28 @@ public class Endangered extends Animal {
   public void setAge(String age) {
     this.age = age;
   }
+
+  @Override
+  public boolean equals(Object otherEndangeredAnimal) {
+      if (otherAnimal instanceof Endangered) {
+          Endangered newEndangeredAnimal = (Endangered) otherEndangeredAnimal;
+          return (this.getName().equals(newEndangeredAnimal.getName()));
+      }
+
+      return false;
+  }
+
+  @Override
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO animals (name, health, age, type) VALUES (:name, :health, :age, :type)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", name)
+        .addParameter("health", health)
+        .addParameter("age", age)
+        .addParameter("type", type)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 }
