@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.sql.Timestamp;
 
 public class Animal implements DatabaseManagement{
-  private int id;
-  private String name;
-  private String age;
-  private String health;
-  private String type;
+  public int id;
+  public String name;
+  public String type;
 
-  public Animal(String name, String age, String health, String type){
+  public static final String ANIMAL_TYPE = "Non-endangered";
+
+  public Animal(String name, String age){
     this.name = name;
     this.age = age;
-    this.health = health;
-    this.type = type;
+    type = ANIMAL_TYPE;
   }
 
   public String getName(){
@@ -23,14 +22,6 @@ public class Animal implements DatabaseManagement{
 
   public int getId() {
     return id;
-  }
-
-  public String getAge() {
-    return age;
-  }
-
-  public String getHealth() {
-    return health;
   }
 
   public String getType() {
