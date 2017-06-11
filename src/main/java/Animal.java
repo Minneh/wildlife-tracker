@@ -25,7 +25,7 @@ public class Animal implements DatabaseManagement{
   public String getType() {
     return type;
   }
-  
+
   public void setName(String name) {
     this.name = name;
   }
@@ -42,7 +42,7 @@ public class Animal implements DatabaseManagement{
 
   @Override
   public void save() {
-    String sql = "INSERT INTO animals (name) VALUES (:name);";
+    String sql = "INSERT INTO animals (name, type) VALUES (:name. :type);";
 
     try (Connection con = DB.sql2o.open()) {
         this.id = (int) con.createQuery(sql, true)
@@ -82,5 +82,17 @@ public class Animal implements DatabaseManagement{
             .executeAndFetchFirst(Animal.class);
     }
   }
+
+  public void update() {
+    String sql = "UPDATE animals SET name = :name WHERE id = :id";
+    
+      try(Connection con = DB.sql2o.open()) {
+        con.createQuery(sql)
+          .addParameter("name", name)
+          .addParameter("id", id)
+          .throwOnMappingFailure(false)
+          .executeUpdate();
+      }
+    }
 
 }
