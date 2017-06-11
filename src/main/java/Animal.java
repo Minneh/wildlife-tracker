@@ -7,12 +7,10 @@ public class Animal implements DatabaseManagement{
   public int id;
   public String name;
   public String type;
-
   public static final String ANIMAL_TYPE = "Non-endangered";
 
   public Animal(String name, String age){
     this.name = name;
-    this.age = age;
     type = ANIMAL_TYPE;
   }
 

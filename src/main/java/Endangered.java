@@ -15,4 +15,20 @@ public class Endangered extends Animal {
     this.age = age;
     type = ANIMAL_TYPE;
   }
+
+  public String getHealth() {
+    return health;
+  }
+
+  public String getAge() {
+    return age;
+  }
+
+  public void setHealth(String health) {
+    this.health = health;
+  }
+
+  public void setAge(String age) {
+    this.age = age;
+  }
 }
