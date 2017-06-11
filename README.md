@@ -38,5 +38,5 @@ You will need the following things properly installed on your computer.
 * `\c wildlife_tracker;`
 * `CREATE TABLE animals (id serial PRIMARY KEY, name varchar, health varchar, age varchar, type varchar);`
 * `CREATE TABLE
-wildlife_tracker=# CREATE TABLE sightings (id serial PRIMARY KEY, animalid int, location varchar, rangername varchar, timestamp timestamp);`
+wildlife_tracker=# CREATE TABLE sightings (id serial PRIMARY KEY, animal_id int, location varchar, ranger_name varchar, timestamp timestamp);`
 * `CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;`
