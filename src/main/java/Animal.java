@@ -25,6 +25,10 @@ public class Animal implements DatabaseManagement{
   public String getType() {
     return type;
   }
+  
+  public void setName(String name) {
+    this.name = name;
+  }
 
   @Override
   public boolean equals(Object otherAnimal) {
