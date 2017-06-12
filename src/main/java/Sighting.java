@@ -101,4 +101,17 @@ public class Sighting implements DatabaseManagement{
     }
   }
 
+  public void update() {
+      String sql = "UPDATE sightings SET location = :location, rangername = :rangername WHERE id = :id";
+
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("location", location)
+        .addParameter("rangername", rangerName)
+        .addParameter("id", id)
+        .throwOnMappingFailure(false)
+        .executeUpdate();
+    }
+  }
+
 }
