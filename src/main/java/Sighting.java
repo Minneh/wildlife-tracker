@@ -39,6 +39,14 @@ public class Sighting implements DatabaseManagement{
     return timestamp;
   }
 
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
+  public void setRangerName(String rangerName) {
+    this.rangerName = rangerName;
+  }
+
   @Override
   public void save() {
     String sql = "INSERT INTO sightings (animal_id, location, ranger_name, timestamp) VALUES (:animal_id, :location, :ranger_name, :timestamp);";
@@ -55,7 +63,7 @@ public class Sighting implements DatabaseManagement{
   }
 
   public static List<Sighting> all() {
-    String sql = "SELECT * FROM sightings;";
+    String sql = "SELECT * FROM sightings ORDER BY timestamp DESC;";
 
     try (Connection con = DB.sql2o.open()) {
         return con.createQuery(sql)
