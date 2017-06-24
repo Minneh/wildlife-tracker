@@ -55,4 +55,27 @@ public class Endangered extends Animal {
         .getKey();
     }
   }
+
+  public static Endangered find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM animals WHERE id = :id";
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .throwOnMappingFailure(false)
+        .executeAndFetchFirst(Endangered.class);
+    }
+  }
+
+  @Override
+  public void update() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE animals SET name = :name, health = :health, age = :age WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("health", health)
+        .addParameter("age", age)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
 }
