@@ -34,7 +34,7 @@ public class Endangered extends Animal {
 
   @Override
   public boolean equals(Object otherEndangeredAnimal) {
-      if (otherAnimal instanceof Endangered) {
+      if (otherEndangeredAnimal instanceof Endangered) {
           Endangered newEndangeredAnimal = (Endangered) otherEndangeredAnimal;
           return (this.getName().equals(newEndangeredAnimal.getName()));
       }

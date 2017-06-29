@@ -3,13 +3,16 @@ import java.util.List;
 import java.util.ArrayList;
 import java.sql.Timestamp;
 
-public class Animal implements DatabaseManagement{
+public class Animal{
   public int id;
   public String name;
   public String type;
   public static final String ANIMAL_TYPE = "Non-endangered";
 
-  public Animal(String name, String age){
+  public Animal(String name){
+    if (name.equals("")){
+      throw new IllegalArgumentException("Please enter an animal name.");
+    }
     this.name = name;
     type = ANIMAL_TYPE;
   }
@@ -40,7 +43,6 @@ public class Animal implements DatabaseManagement{
       return false;
   }
 
-  @Override
   public void save() {
     String sql = "INSERT INTO animals (name, type) VALUES (:name. :type);";
 
@@ -51,7 +53,7 @@ public class Animal implements DatabaseManagement{
             .getKey();
     }
   }
-  @Override
+
     public void delete() {
         String sql = "DELETE FROM animals WHERE id = :id;";
 
@@ -85,7 +87,7 @@ public class Animal implements DatabaseManagement{
 
   public void update() {
     String sql = "UPDATE animals SET name = :name WHERE id = :id";
-    
+
       try(Connection con = DB.sql2o.open()) {
         con.createQuery(sql)
           .addParameter("name", name)

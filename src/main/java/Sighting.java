@@ -44,7 +44,7 @@ public class Sighting implements DatabaseManagement{
   }
 
   public void setRangerName(String rangerName) {
-    this.rangerName = rangerName;
+    this.ranger_name = rangerName;
   }
 
   @Override
@@ -102,12 +102,12 @@ public class Sighting implements DatabaseManagement{
   }
 
   public void update() {
-      String sql = "UPDATE sightings SET location = :location, rangername = :rangername WHERE id = :id";
+      String sql = "UPDATE sightings SET location = :location, ranger_name = :rangername WHERE id = :id";
 
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("location", location)
-        .addParameter("rangername", rangerName)
+        .addParameter("rangername", ranger_name)
         .addParameter("id", id)
         .throwOnMappingFailure(false)
         .executeUpdate();
