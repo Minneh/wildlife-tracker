@@ -102,5 +102,14 @@ public class App {
     model.put("template", "templates/sightings.vtl");
     return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
+
+  get("/animals/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("animal", Animal.find(Integer.parseInt(request.params(":id"))));
+      model.put("endangered", Endangered.find(Integer.parseInt(request.params(":id"))));
+      model.put("Sighting", Sighting.class);
+      model.put("template", "templates/animal.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
