@@ -70,6 +70,9 @@ public class App {
       } catch (IllegalArgumentException exception) {
         System.out.println("Please enter all input fields.");
       }
+      response.redirect("/animals");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     get("/sightings/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
