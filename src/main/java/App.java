@@ -81,6 +81,20 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/sightings/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int animalId = Integer.parseInt(request.queryParams("animal"));
+      String location = request.queryParams("location");
+      String rangerName = request.queryParams("rangerName");
+      try {
+        Sighting sighting = new Sighting(animalId, location, rangerName);
+      } catch (IllegalArgumentException exception) {
+        System.out.println("Please enter Ranger name.");
+      }
+      response.redirect("/sightings");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/sightings", (request, response) -> {
     Map<String, Object> model = new HashMap<String, Object>();
     model.put("sightings", Sighting.all());
