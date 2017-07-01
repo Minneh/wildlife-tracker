@@ -40,6 +40,19 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/animals/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      try {
+        Animal animal = new Animal(name);
+        animal.save();
+      } catch (IllegalArgumentException exception) {
+        System.out.println("Please enter an animal name.");
+      }
+      response.redirect("/animals");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/endangered/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/endangered-animal-form.vtl");
