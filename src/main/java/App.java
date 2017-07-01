@@ -35,7 +35,7 @@ public class App {
 
     get("/endangered/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/endangered-form.vtl");
+      model.put("template", "templates/endangered-animal-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
