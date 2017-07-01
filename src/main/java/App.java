@@ -52,5 +52,13 @@ public class App {
       model.put("template", "templates/sighting-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/sightings", (request, response) -> {
+    Map<String, Object> model = new HashMap<String, Object>();
+    model.put("sightings", Sighting.all());
+    model.put("Animal", Animal.class);
+    model.put("template", "templates/sightings.vtl");
+    return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
   }
 }
