@@ -111,5 +111,32 @@ public class App {
       model.put("template", "templates/animal.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/animals/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("animal", Animal.find(Integer.parseInt(request.params(":id"))));
+      model.put("endangered", Endangered.find(Integer.parseInt(request.params(":id"))));
+      model.put("template", "templates/animal-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/animals/:id/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params(":id"));
+      String name = request.queryParams("name");
+      String health = request.queryParams("health");
+      String age = request.queryParams("age");
+      Animal animal = Animal.find(id);
+      animal.setName(name);
+      animal.update();
+      if(animal.getType().equals("Endangered")) {
+        Endangered endangered = Endangered.find(id);
+        endangered.setHealth(health);
+        endangered.setAge(age);
+        endangered.update();
+      }
+      response.redirect("/animals/" + id);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
