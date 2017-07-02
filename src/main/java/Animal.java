@@ -44,13 +44,14 @@ public class Animal{
   }
 
   public void save() {
-    String sql = "INSERT INTO animals (name, type) VALUES (:name. :type);";
-
-    try (Connection con = DB.sql2o.open()) {
-        this.id = (int) con.createQuery(sql, true)
-            .addParameter("name", this.name)
-            .executeUpdate()
-            .getKey();
+    String sql = "INSERT INTO animals (name, type) VALUES (:name, :type)";
+    try(Connection con = DB.sql2o.open()) {
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", name)
+        .addParameter("type", type)
+        .throwOnMappingFailure(false)
+        .executeUpdate()
+        .getKey();
     }
   }
 
