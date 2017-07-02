@@ -16,7 +16,7 @@
       <p><em>none</em></p>
     #end
     #foreach($sighting in $Sighting.allByAnimal($animal.getId()))
-      <p>Location: $sighting.getLocation(), Ranger: $sighting.getRangerName() <em>$sighting.getTimestamp()</em></p>
+      <p>Location: $sighting.getLocation(), Ranger: $sighting.getRangerName() <em>$sighting.getTimeSeen()</em></p>
     #end
   </div>
 </div>

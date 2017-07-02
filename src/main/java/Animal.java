@@ -63,7 +63,7 @@ public void delete() {
       .addParameter("id", id)
       .throwOnMappingFailure(false)
       .executeUpdate();
-    String sql2 = "DELETE from sightings WHERE animalid = :id";
+    String sql2 = "DELETE from sightings WHERE animal_id = :id";
     con.createQuery(sql2)
       .addParameter("id", id)
       .throwOnMappingFailure(false)
