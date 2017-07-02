@@ -55,15 +55,21 @@ public class Animal{
     }
   }
 
-    public void delete() {
-        String sql = "DELETE FROM animals WHERE id = :id;";
 
-        try (Connection con = DB.sql2o.open()) {
-            con.createQuery(sql)
-                .addParameter("id", id)
-                .executeUpdate();
-        }
-    }
+public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "DELETE from animals WHERE id = :id";
+    con.createQuery(sql)
+      .addParameter("id", id)
+      .throwOnMappingFailure(false)
+      .executeUpdate();
+    String sql2 = "DELETE from sightings WHERE animalid = :id";
+    con.createQuery(sql2)
+      .addParameter("id", id)
+      .throwOnMappingFailure(false)
+      .executeUpdate();
+  }
+}
 
   public static List<Animal> all() {
     String sql = "SELECT * FROM animals;";
