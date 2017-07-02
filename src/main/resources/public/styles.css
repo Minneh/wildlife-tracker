@@ -24,3 +24,7 @@ a.delete {
 a{
   font-size: 12pt;
 }
+
+p, label{
+  font-size: 12pt;
+}
