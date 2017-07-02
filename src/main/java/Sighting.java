@@ -75,6 +75,15 @@ public class Sighting implements DatabaseManagement{
     }
   }
 
+  public static List<Sighting> allByAnimal(int animalId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings WHERE animalid = :animalId ORDER BY timestamp DESC";
+      return con.createQuery(sql)
+        .addParameter("animalId", animalId)
+        .executeAndFetch(Sighting.class);
+    }
+  }
+
   public boolean equals(Object otherSighting){
     if(!(otherSighting instanceof Sighting)){
       return false;
