@@ -12,11 +12,14 @@ public class Sighting implements DatabaseManagement{
   private String ranger_name;
   private Timestamp timestamp;
 
-  public Sighting(int animal_id, String location, String ranger_name, Timestamp timestamp) {
-      this.animal_id = animal_id;
-      this.location = location;
-      this.ranger_name = ranger_name;
-      this.timestamp = timestamp;
+  public Sighting(int animal_id, String location, String ranger_name) {
+    if (rangerName.equals("")){
+      throw new IllegalArgumentException("Please enter Ranger name.");
+    }
+    this.animalId = animal_id;
+    this.location = location;
+    this.rangerName = ranger_name;
+    this.save();
   }
 
   public int getId(){
