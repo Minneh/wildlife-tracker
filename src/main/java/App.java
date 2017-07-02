@@ -83,11 +83,11 @@ public class App {
 
     post("/sightings/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      int animalId = Integer.parseInt(request.queryParams("animal"));
+      int animal_id = Integer.parseInt(request.queryParams("animal"));
       String location = request.queryParams("location");
-      String rangerName = request.queryParams("rangerName");
+      String ranger_name = request.queryParams("rangerName");
       try {
-        Sighting sighting = new Sighting(animalId, location, rangerName);
+        Sighting sighting = new Sighting(animal_id, location, ranger_name);
       } catch (IllegalArgumentException exception) {
         System.out.println("Please enter Ranger name.");
       }

@@ -13,12 +13,12 @@ public class Sighting implements DatabaseManagement{
   private Timestamp timestamp;
 
   public Sighting(int animal_id, String location, String ranger_name) {
-    if (rangerName.equals("")){
+    if (ranger_name.equals("")){
       throw new IllegalArgumentException("Please enter Ranger name.");
     }
-    this.animalId = animal_id;
+    this.animal_id = animal_id;
     this.location = location;
-    this.rangerName = ranger_name;
+    this.ranger_name = ranger_name;
     this.save();
   }
 
@@ -38,8 +38,8 @@ public class Sighting implements DatabaseManagement{
     return ranger_name;
   }
 
-  public Timestamp getTimeSeen(){
-    return timestamp;
+  public String getTimeSeen(){
+    return String.format("%1$TD %1$TR", timestamp);
   }
 
   public void setLocation(String location) {
@@ -52,7 +52,7 @@ public class Sighting implements DatabaseManagement{
 
   @Override
   public void save() {
-    String sql = "INSERT INTO sightings (animal_id, location, ranger_name, timestamp) VALUES (:animal_id, :location, :ranger_name, :timestamp);";
+    String sql = "INSERT INTO sightings (animal_id, location, ranger_name, timestamp) VALUES (:animal_id, :location, :ranger_name, now());";
 
     try (Connection con = DB.sql2o.open()) {
         this.id = (int) con.createQuery(sql, true)
