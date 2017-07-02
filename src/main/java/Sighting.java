@@ -59,7 +59,6 @@ public class Sighting implements DatabaseManagement{
             .addParameter("animal_id", this.animal_id)
             .addParameter("location", this.location)
             .addParameter("ranger_name", this.ranger_name)
-            .addParameter("timestamp",this.timestamp)
             .executeUpdate()
             .getKey();
     }
