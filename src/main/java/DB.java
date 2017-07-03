@@ -1,7 +1,28 @@
 import org.sql2o.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class DB {
+    private static URI dbUri;
+    public static Sql2o sql2o;
 
-  public static Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/wildlife_tracker", null, null);
-//   public static Sql2o sql2o = new Sql2o("jdbc:postgresql://ec2-23-21-76-49.compute-1.amazonaws.com:5432/df2ubtmuhc32s7","stdhhdzdeynsis", "43a1b82999c0f772dbbd8f7602f0fa50c75b0c3e0f7b0c2caa36637a9569de10");
+    static {
+
+        try {
+            if (System.getenv("DATABASE_URL") == null) {
+                dbUri = new URI("postgres://localhost:5432/wildlife_tracker");
+            } else {
+                dbUri = new URI(System.getenv("DATABASE_URL"));
+            }
+
+            int port = dbUri.getPort();
+            String host = dbUri.getHost();
+            String path = dbUri.getPath();
+            String username = (dbUri.getUserInfo() == null) ? null : dbUri.getUserInfo().split(":")[0];
+            String password = (dbUri.getUserInfo() == null) ? null : dbUri.getUserInfo().split(":")[1];
+
+            sql2o = new Sql2o("jdbc:postgresql://" + host + ":" + port + path, username, password);
+        } catch (URISyntaxException e ) {
+        }
+    }
 }
