@@ -3,7 +3,7 @@ apply plugin: 'application'
 
 archivesBaseName = "wildlife-tracker"
 version = '1.0'
-applicationName = 'trackerof-wildlife'
+applicationName = 'app'
 mainClassName = "App"
 
 repositories {
